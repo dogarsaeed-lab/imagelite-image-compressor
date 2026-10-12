@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Compress images online for free. Resize image dimensions, compare file sizes, and download optimized JPG, PNG, or WebP images directly in your browser.">
+  <meta property="og:title" content="Free Image Compressor Online">
+  <meta property="og:description" content="Compress and convert images in your browser. No account or API key required.">
+  <meta property="og:type" content="website">
+  <title>Free Image Compressor Online | ImageLite</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="ImageLite home"><span class="brand-mark" aria-hidden="true">◈</span> ImageLite</a>
+    <a class="header-link" href="#how-it-works">How it works</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow">FREE · PRIVATE · IN YOUR BROWSER</span>
+      <h1>Compress images.<br><span>Keep the quality.</span></h1>
+      <p class="hero-copy">Reduce image file sizes in seconds. Your images are processed on your device and are not uploaded to our server.</p>
+    </section>
+
+    <section class="tool-card" aria-labelledby="tool-title">
+      <h2 id="tool-title">Image compressor</h2>
+      <p class="muted">Choose an image to get started. Maximum file size: 20 MB.</p>
+
+      <label class="drop-zone" id="drop-zone" for="file-input" tabindex="0">
+        <span class="upload-icon" aria-hidden="true">↑</span>
+        <strong>Drop your image here</strong>
+        <span>or <span class="browse-text">browse files</span></span>
+        <small>JPG, PNG, WebP and other browser-readable images</small>
+      </label>
+      <input id="file-input" type="file" accept="image/*" hidden>
+
+      <div id="error-box" class="message error" role="alert" hidden></div>
+      <div id="status-box" class="message status" role="status" aria-live="polite" hidden></div>
+
+      <div id="workspace" hidden>
+        <div class="file-summary">
+          <div class="file-badge" aria-hidden="true">IMG</div>
+          <div class="file-details">
+            <strong id="file-name">image.jpg</strong>
+            <span id="file-meta" class="muted"></span>
+          </div>
+          <button id="remove-file" class="text-button" type="button">Remove</button>
+        </div>
+
+        <div class="settings-grid">
+          <div class="field">
+            <label for="quality">Compression quality <strong id="quality-value">75%</strong></label>
+            <input id="quality" type="range" min="10" max="100" step="5" value="75">
+            <div class="range-labels"><span>Smaller file</span><span>Higher quality</span></div>
+          </div>
+          <div class="field">
+            <label for="output-format">Output format</label>
+            <select id="output-format">
+              <option value="image/webp">WebP (recommended)</option>
+              <option value="image/jpeg">JPG</option>
+              <option value="image/png">PNG (lossless)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="max-width">Maximum width (px) <span class="optional">optional</span></label>
+            <input id="max-width" type="number" min="1" max="20000" placeholder="Original width">
+          </div>
+          <div class="field">
+            <label for="max-height">Maximum height (px) <span class="optional">optional</span></label>
+            <input id="max-height" type="number" min="1" max="20000" placeholder="Original height">
+          </div>
+        </div>
+
+        <button id="compress-button" class="primary-button" type="button">Compress image</button>
+
+        <div id="results" hidden>
+          <div class="result-heading">
+            <h3>Your compressed image</h3>
+            <span id="savings-badge" class="savings-badge"></span>
+          </div>
+          <div class="preview-grid">
+            <figure class="preview-card">
+              <figcaption>Original</figcaption>
+              <div class="preview-frame"><img id="original-preview" alt="Original image preview"></div>
+              <div class="preview-meta"><span id="original-dimensions"></span><strong id="original-size"></strong></div>
+            </figure>
+            <figure class="preview-card">
+              <figcaption>Compressed</figcaption>
+              <div class="preview-frame"><img id="compressed-preview" alt="Compressed image preview"></div>
+              <div class="preview-meta"><span id="compressed-dimensions"></span><strong id="compressed-size"></strong></div>
+            </figure>
+          </div>
+          <p id="result-note" class="result-note"></p>
+          <a id="download-button" class="primary-button download-button" href="#" download="compressed-image.webp">Download image</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="content-section">
+      <h2>How to compress an image</h2>
+      <div class="steps">
+        <article class="step"><span>01</span><h3>Upload</h3><p>Select a JPG, PNG, WebP or another image your browser can open.</p></article>
+        <article class="step"><span>02</span><h3>Adjust</h3><p>Choose quality, output format and optional maximum dimensions.</p></article>
+        <article class="step"><span>03</span><h3>Download</h3><p>Review the result and save the optimized image to your device.</p></article>
+      </div>
+    </section>
+
+    <section class="content-section faq">
+      <h2>Frequently asked questions</h2>
+      <details><summary>Is this image compressor free?</summary><p>Yes. This version runs in your browser and does not require an account or paid API.</p></details>
+      <details><summary>Are my images uploaded?</summary><p>The compression feature processes the selected image locally in your browser. Your image is not sent to a compression server by this tool. Your browser and hosting provider may still process standard website requests.</p></details>
+      <details><summary>Why did my image not get smaller?</summary><p>Some images are already optimized. PNG is a lossless format, and changing its quality slider does not reduce its size in the same way as JPG or WebP. Try another output format or smaller dimensions.</p></details>
+      <details><summary>Will compression always preserve the exact quality?</summary><p>No. Lossy JPG and WebP compression can change image details. Review the preview before downloading. PNG output is lossless for the rendered pixels, but conversion may change metadata or animation.</p></details>
+      <details><summary>Does it support animated GIFs?</summary><p>This browser-based version is intended for still images. Animated GIFs and other multi-frame formats may be flattened to a single frame. Use a dedicated animation tool if preserving animation matters.</p></details>
+    </section>
+
+    <section class="notice">
+      <strong>Use images you have permission to process.</strong>
+      <p>ImageLite is an independent utility and is not affiliated with Google or any image-format vendor.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> ImageLite</span>
+    <span>Free image tools · Processed locally in your browser</span>
+  </footer>
+</body>
+</html>
